@@ -1,0 +1,7 @@
+platform/external/shaderc/glslang 8f05973b2cb583fbc6f950c137396cc3e9fdc50f
+platform/external/shaderc/shaderc 6cd7a08592cf568d595069552d3bb6cf21addb66
+platform/external/shaderc/spirv-headers 07b132823683dfbd2ff06794fc056582427987f9
+platform/external/shaderc/spirv-tools 28bda583e8f8e09d8747cfee019cf38c7a8a91e9
+platform/external/vulkan-validation-layers 10a70517d5e1ac0d62de3f171e56445500eab437
+platform/manifest 7d66bf88c1f30ae8d993fa0cf7bfd7f82330a22e
+toolchain/prebuilts/ndk/r15 d0d20f32ed2fb9871e1ea7604a93fd85ddb98367

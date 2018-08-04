@@ -1,0 +1,93 @@
+// Copyright (C) 2016 The Android Open Source Project
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+cc_defaults {
+    name: "libgtest_defaults",
+    export_include_dirs: ["include"],
+    cflags: ["-Wall", "-Werror"],
+}
+
+cc_defaults {
+    name: "libgtest_host_defaults",
+    target: {
+        linux_bionic: {
+            enabled: true,
+        },
+        windows: {
+            enabled: true,
+        },
+    },
+}
+
+// NDK libraries.
+// We need to build one pair of (libgtest, libgtest_main) for each of the three
+// STLs we support in the NDK since the user's app might use any of them.
+
+// libc++
+cc_library_static {
+    name: "libgtest_ndk_c++",
+    defaults: ["libgtest_defaults"],
+    sdk_version: "9",
+    stl: "c++_static",
+    srcs: ["src/gtest-all.cc"],
+}
+
+cc_library_static {
+    name: "libgtest_main_ndk_c++",
+    defaults: ["libgtest_defaults"],
+    sdk_version: "9",
+    stl: "c++_static",
+    srcs: ["src/gtest_main.cc"],
+}
+
+// Platform and host libraries.
+cc_library_static {
+    name: "libgtest",
+    defaults: ["libgtest_defaults", "libgtest_host_defaults"],
+    host_supported: true,
+    vendor_available: true,
+    srcs: ["src/gtest-all.cc"],
+    rtti: true,
+}
+
+cc_library_static {
+    name: "libgtest_main",
+    defaults: ["libgtest_defaults", "libgtest_host_defaults"],
+    host_supported: true,
+    vendor_available: true,
+    srcs: ["src/gtest_main.cc"],
+}
+
+// Legacy libraries for makefiles that refer to libgtest_host
+cc_library_host_static {
+    name: "libgtest_host",
+    whole_static_libs: ["libgtest"],
+    defaults: ["libgtest_host_defaults"],
+}
+
+cc_library_host_static {
+    name: "libgtest_main_host",
+    whole_static_libs: ["libgtest_main"],
+    defaults: ["libgtest_host_defaults"],
+}
+
+cc_library {
+    name: "libgtest_prod",
+    defaults: ["libgtest_defaults", "libgtest_host_defaults"],
+    host_supported: true,
+    vendor_available: true,
+    export_include_dirs: ["include"],
+}
+
+// Tests are in the Android.mk. Run with external/googletest/run_tests.py.

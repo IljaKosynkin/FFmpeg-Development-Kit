@@ -1,0 +1,7 @@
+LIBAVDEVICE_58 {
+    global:
+        avdevice_*;
+        av_*;
+    local:
+        *;
+};

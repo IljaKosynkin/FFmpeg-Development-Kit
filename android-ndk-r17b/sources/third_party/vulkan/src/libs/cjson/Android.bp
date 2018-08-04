@@ -1,0 +1,36 @@
+cc_library_static {
+    name: "cjson",
+    clang: true,
+    srcs: [
+        "cJSON.c",
+    ],
+    cflags: [
+        "-Wall",
+        "-Werror",
+    ],
+    local_include_dirs: [
+        "includes",
+    ],
+    export_include_dirs: [
+        "includes",
+    ],
+}
+
+cc_library_static {
+    name: "cjson_ndk",
+    clang: true,
+    srcs: [
+        "cJSON.c",
+    ],
+    cflags: [
+        "-Wall",
+        "-Werror",
+    ],
+    local_include_dirs: [
+        "includes",
+    ],
+    export_include_dirs: [
+        "includes",
+    ],
+    sdk_version: "24",
+}
