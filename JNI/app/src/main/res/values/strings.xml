@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">JNI</string>
+    <string name="process">Process</string>
 </resources>

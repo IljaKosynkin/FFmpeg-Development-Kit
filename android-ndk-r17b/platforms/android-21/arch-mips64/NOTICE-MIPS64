@@ -1,3 +1,0 @@
-This arch-mips64 directory exists to make the NDK compatible with the Android
-SDK's Gradle plugin, version 3.0.1 and earlier, which expects this
-directory to exist.

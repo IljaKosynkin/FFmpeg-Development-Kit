@@ -1,3 +1,0 @@
-#!/bin/sh
-DIR="$(cd "$(dirname "$0")" && pwd)"
-$DIR/prebuilt/darwin-x86_64/bin/ndk-which "$@"
