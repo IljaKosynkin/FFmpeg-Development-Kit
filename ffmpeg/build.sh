@@ -126,9 +126,9 @@ function build {
                 --extra-ldflags="-L$NDK/toolchains/$TOOLCHAIN_FOLDER-4.9/prebuilt/$HOST/lib/gcc/$TARGET/4.9.x -L$NDK/platforms/android-$LEVEL/arch-$PLATFORM_ARCH/usr/lib $LDFLAGS" \
                 --sysroot=$SYSROOT --extra-libs=-lgcc
 
-    $NDK/prebuilt/darwin-x86_64/bin/make clean
-    $NDK/prebuilt/darwin-x86_64/bin/make -j2
-    $NDK/prebuilt/darwin-x86_64/bin/make install
+    $NDK/prebuilt/$HOST/bin/make clean
+    $NDK/prebuilt/$HOST/bin/make -j2
+    $NDK/prebuilt/$HOST/bin/make install
 
     export NDK=$NDK
     export ARCH=$ARCH
