@@ -10,8 +10,8 @@ DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PARENT="$(dirname "${DIR}")"
 NDK="$(dirname "${PARENT}")"
 PROJECT="$(dirname "${NDK}")/JNI/app"
-PROJECT_JNI="$(dirname "${NDK}")/JNI/app/jni"
-PROJECT_LIBS="$(dirname "${NDK}")/JNI/app/libs"
+PROJECT_JNI="$PROJECT/jni"
+PROJECT_LIBS="$PROJECT/libs"
 SYSROOT="$NDK/sysroot"
 HOST="darwin-x86_64"
 LLVM_TOOLCHAIN="$NDK/toolchains/llvm/prebuilt/$HOST/bin"
@@ -44,6 +44,7 @@ function build {
     ARCH=$1
     LEVEL=$2
     CONFIGURATION="--disable-asm --enable-cross-compile --disable-static --disable-programs --disable-doc --enable-shared --enable-protocol=file --enable-pic --enable-small $3"
+    LIB_FOLDER="lib"
 
     case $ARCH in
         "armeabi-v7a")
@@ -94,6 +95,7 @@ function build {
             fi
 
             PLATFORM_ARCH="x86_64"
+            LIB_FOLDER="lib64"
             TOOLCHAIN_FOLDER=$PLATFORM_ARCH
         ;;
     esac
