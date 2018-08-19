@@ -139,6 +139,10 @@ function build {
 
     $NDK/ndk-build
 
+    if [ ! -d "$PROJECT/out" ]; then
+        mkdir -p "$PROJECT/out"
+    fi
+
     yes | cp -rf "$PROJECT_LIBS/$ARCH" "$PROJECT/out/$ARCH"
 }
 
