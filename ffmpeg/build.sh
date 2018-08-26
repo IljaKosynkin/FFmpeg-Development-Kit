@@ -40,7 +40,7 @@ done
 # First: ARCH, supported values: armeabi-v7a, arm64-v8a, x86, x86_64
 # Second: platform level. Range: 14-19, 21-24, 26-28
 # Third: additinal configuration flags. Already present flags: --enable-cross-compile --disable-static --disable-programs --disable-doc --enable-shared --enable-protocol=file --enable-pic --enable-small
-function build {
+build () {
     ARCH=$1
     LEVEL=$2
     CONFIGURATION="--disable-asm --enable-cross-compile --disable-static --disable-programs --disable-doc --enable-shared --enable-protocol=file --enable-pic --enable-small $3"
@@ -123,7 +123,7 @@ function build {
                 --ar=$AR --strip=$STRIP --ld=$LD --cc=$CC --cxx=$CXX --as=$AS \
                 --target-os=android \
                 --extra-cflags="$CC_FLAGS -I$SYSROOT/usr/include/$TARGET $CFLAGS" \
-                --extra-ldflags="-L$NDK/toolchains/$TOOLCHAIN_FOLDER-4.9/prebuilt/$HOST/lib/gcc/$TARGET/4.9.x -L$NDK/platforms/android-$LEVEL/arch-$PLATFORM_ARCH/usr/lib $LDFLAGS" \
+                --extra-ldflags="-L$NDK/toolchains/$TOOLCHAIN_FOLDER-4.9/prebuilt/$HOST/lib/gcc/$TARGET/4.9.x -L$NDK/platforms/android-$LEVEL/arch-$PLATFORM_ARCH/usr/$LIB_FOLDER $LDFLAGS" \
                 --sysroot=$SYSROOT --extra-libs=-lgcc
 
     $NDK/prebuilt/$HOST/bin/make clean
