@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">FFmpegSample</string>
+    <string name="process">Process</string>
+</resources>
