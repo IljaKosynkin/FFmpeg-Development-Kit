@@ -17,7 +17,7 @@ android {
 
         externalNativeBuild {
             cmake {
-                arguments '-DANDROID_ARM_NEON=ON'
+
             }
         }
 
@@ -30,6 +30,28 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    flavorDimensions "non-free"
+    productFlavors {
+        free {
+            dimension "non-free"
+            buildConfigField "boolean", "LIB_X264_ENABLED", "false"
+            externalNativeBuild {
+                cmake {
+                    arguments "-DLIB_X264_ENABLED:BOOL=OFF", "-DANDROID_ARM_NEON=ON"
+                }
+            }
+        }
+        nonFree {
+            dimension "non-free"
+            buildConfigField "boolean", "LIB_X264_ENABLED", "true"
+            externalNativeBuild {
+                cmake {
+                    arguments '-DLIB_X264_ENABLED:BOOL=ON', "-DANDROID_ARM_NEON=ON"
+                }
+            }
         }
     }
 

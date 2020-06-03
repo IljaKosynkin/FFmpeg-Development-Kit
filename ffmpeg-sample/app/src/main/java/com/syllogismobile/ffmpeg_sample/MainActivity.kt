@@ -81,9 +81,15 @@ class MainActivity : AppCompatActivity() {
             "-filter_complex",
             "overlay=10:10",
             "-t",
-            "25",
-            videoOut
+            "25"
         )
+
+        if (BuildConfig.LIB_X264_ENABLED) {
+            args.add("-preset")
+            args.add("ultrafast")
+        }
+
+        args.add(videoOut)
 
         task.execute(*args.toTypedArray())
     }

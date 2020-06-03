@@ -3,6 +3,10 @@ package com.syllogismobile.ffmpeg_sample
 internal class VideoKit {
     companion object {
         init {
+            if (BuildConfig.LIB_X264_ENABLED) {
+                System.loadLibrary("x264")
+                System.loadLibrary("postproc")
+            }
             System.loadLibrary("avutil")
             System.loadLibrary("swresample")
             System.loadLibrary("avcodec")

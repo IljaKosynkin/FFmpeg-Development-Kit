@@ -119,6 +119,7 @@ ExternalProject_Add(ffmpeg_target
         LOG_CONFIGURE 1
         LOG_BUILD 1
         LOG_INSTALL 1
+        DEPENDS ${FFMPEG_DEPENDS}
 )
 
 ExternalProject_Get_property(ffmpeg_target SOURCE_DIR)
