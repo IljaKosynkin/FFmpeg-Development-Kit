@@ -39,7 +39,7 @@ file(
 set(FFMPEG_CC ${CMAKE_C_COMPILER})
 set(FFMPEG_CXX ${CMAKE_CXX_COMPILER})
 set(FFMPEG_AR ${ANDROID_AR})
-set(FFMPEG_AS ${CMAKE_ASM_COMPILER})
+set(FFMPEG_AS ${ANDROID_ASM_COMPILER})
 
 # Taken from https://android.googlesource.com/platform/ndk/+/master/build/cmake/android.toolchain.cmake
 # Remove when toolchain actually will include it
