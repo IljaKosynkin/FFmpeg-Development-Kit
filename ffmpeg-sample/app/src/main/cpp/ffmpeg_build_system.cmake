@@ -26,8 +26,8 @@ if (${STEP} STREQUAL configure)
             --enable-shared
             --enable-protocol=file
             --enable-pic
-            --shlibdir=${LIBS_OUT}
-            --incdir=${HEADERS_OUT}
+            --shlibdir=${PREFIX}
+            --prefix=${PREFIX}
             ${CONFIGURE_EXTRAS_ENCODED}
     )
 

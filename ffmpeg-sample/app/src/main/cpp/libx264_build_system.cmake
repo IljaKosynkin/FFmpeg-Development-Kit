@@ -14,8 +14,8 @@ if (${STEP} STREQUAL configure)
             --host=${HOST}
             --enable-pic
             --enable-shared
-            --libdir=${LIBS_OUT}
-            --includedir=${HEADERS_OUT}
+            --libdir=${PREFIX}
+            --prefix=${PREFIX}
             ${CONFIGURE_EXTRAS_ENCODED}
     )
 
