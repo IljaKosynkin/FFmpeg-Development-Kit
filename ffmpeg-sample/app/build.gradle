@@ -5,7 +5,10 @@ plugins {
 }
 
 android {
+    // Ref : https://developer.android.com/studio/projects/install-ndk#apply-specific-version
     ndkVersion "21.3.6528147"  //TODO  define NDK version  now not use local.properties
+    //Ref : https://developer.android.com/studio/projects/configure-agp-ndk
+//    ndkPath " "  // Point to your own NDK
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
 
