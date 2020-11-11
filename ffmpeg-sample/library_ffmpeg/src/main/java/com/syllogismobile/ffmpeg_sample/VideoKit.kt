@@ -1,6 +1,7 @@
 package com.syllogismobile.ffmpeg_sample
+import org.ffmpeg.releases.BuildConfig
 
-internal class VideoKit {
+open class VideoKit {
     companion object {
         init {
             if (BuildConfig.LIB_X264_ENABLED) {

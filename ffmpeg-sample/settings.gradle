@@ -1,2 +1,5 @@
-rootProject.name='FFmpegSample'
+rootProject.name='FFmpeg-Development-Kit'
 include ':app'
+include ':library_ffmpeg'
+//include ':library_ffmpeg_ext'//TODO our self module
+//include ':library_ffmpeg_cut'//TODO our self module

@@ -13,7 +13,7 @@ IF (NOT EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/${FFMPEG_NAME})
 
     execute_process(
             COMMAND ${CMAKE_COMMAND} -E tar xzf ${CMAKE_CURRENT_SOURCE_DIR}/${FFMPEG_ARCHIVE_NAME}
-            WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+            WORKING_DIRECTORY ../../../../app/src/main/cpp
     )
 
     # We're patching exit just before return in main function of ffmpeg.c because it will crash the application
@@ -26,7 +26,7 @@ IF (NOT EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/${FFMPEG_NAME})
 ENDIF()
 
 file(
-        COPY ${CMAKE_CURRENT_SOURCE_DIR}/ffmpeg_build_system.cmake
+        COPY ffmpeg_build_system.cmake
         DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/${FFMPEG_NAME}
         FILE_PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE
 )
@@ -130,7 +130,7 @@ ExternalProject_Add_Step(
             -DSOURCE_DIR:STRING=${CMAKE_CURRENT_SOURCE_DIR}
             -DFFMPEG_NAME:STRING=${FFMPEG_NAME}
             -DOUT:STRING=${CMAKE_LIBRARY_OUTPUT_DIRECTORY}
-        -P ${CMAKE_CURRENT_SOURCE_DIR}/copy_headers.cmake
+        -P copy_headers.cmake
         DEPENDEES build
         DEPENDERS install
 )

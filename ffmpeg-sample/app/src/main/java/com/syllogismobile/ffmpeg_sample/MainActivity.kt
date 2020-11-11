@@ -10,14 +10,14 @@ import androidx.core.app.ActivityCompat
 import kotlinx.android.synthetic.main.activity_main.*
 import java.io.*
 import java.lang.ref.WeakReference
-
+import org.ffmpeg.releases.BuildConfig
 
 class MainActivity : AppCompatActivity() {
     private lateinit var videoOut: String
     private lateinit var videoIn: String
     private lateinit var watermark: String
 
-    private val videoKit = VideoKit()
+    private val videoKit =  VideoKit()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

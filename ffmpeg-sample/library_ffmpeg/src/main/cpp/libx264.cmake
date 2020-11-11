@@ -12,7 +12,7 @@ IF (NOT EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/${LIBX264_NAME})
 
     execute_process(
             COMMAND ${CMAKE_COMMAND} -E tar xzf ${CMAKE_CURRENT_SOURCE_DIR}/${LIBX264_ARCHIVE_NAME}
-            WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+            WORKING_DIRECTORY ../../../../app/src/main/cpp
     )
 
     # We're patching install step manually because it installs libx264 with version suffix and Android won't have it
@@ -26,7 +26,7 @@ IF (NOT EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/${LIBX264_NAME})
 ENDIF()
 
 file(
-        COPY ${CMAKE_CURRENT_SOURCE_DIR}/libx264_build_system.cmake
+        COPY libx264_build_system.cmake
         DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/${LIBX264_NAME}
         FILE_PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE
 )
