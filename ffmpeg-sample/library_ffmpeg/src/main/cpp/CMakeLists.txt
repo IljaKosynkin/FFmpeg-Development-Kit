@@ -25,8 +25,6 @@ ENDIF()
 #FIXME here how to get library_ffmpeg : libavutil libswresample libavcodec libavformat libswscale libavfilter libavdevice
 include(ffmpeg.cmake)
 
-add_library(native-lib SHARED native-lib.c ${ffmpeg_src})
-add_dependencies(native-lib ffmpeg_target)
 find_library(log-lib log)
 #FIXME  here how to make FFMPEG library : avutil swresample avcodec avformat swscale avfilter avdevice
-target_link_libraries(native-lib ${log-lib} ${FFMPEG_LIBS})
+target_link_libraries(${log-lib} ${FFMPEG_LIBS})

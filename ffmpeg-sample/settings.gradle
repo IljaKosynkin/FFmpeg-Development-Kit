@@ -1,5 +1,5 @@
 rootProject.name='FFmpeg-Development-Kit'
 include ':app'
-include ':library_ffmpeg'
-include ':library_ffmpeg_extension'//TODO our self module
-//include ':library_ffmpeg_cut'//TODO our self module
+include ':library_ffmpeg'//TODO pure ffmpeg
+include ':library_ffmpeg_extension'//TODO our self module for ffmpeg extension let ffmpeg advanced
+include ':library_extension_ffmpeg_demo'//TODO our self module form control /use ffmpeg
