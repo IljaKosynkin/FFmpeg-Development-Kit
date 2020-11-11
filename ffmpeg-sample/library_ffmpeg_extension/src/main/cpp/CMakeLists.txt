@@ -10,23 +10,22 @@ include_directories(${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/include)
 
 include(ExternalProject)
 
-set(FFMPEG_LIBS avutil swresample avcodec avformat swscale avfilter avdevice)
-set(FFMPEG_CONFIGURE_EXTRAS --enable-jni --enable-mediacodec)
+#set(FFMPEG_LIBS avutil swresample avcodec avformat swscale avfilter avdevice)
+#set(FFMPEG_CONFIGURE_EXTRAS --enable-jni --enable-mediacodec)
 IF (${LIB_X264_ENABLED})
     include(libx264.cmake)
 
     set(FFMPEG_DEPENDS libx264_target)
-    set(FFMPEG_EXTRA_LD_FLAGS "-L${CMAKE_LIBRARY_OUTPUT_DIRECTORY}")
+    set(FFMPEG_EXTRA_LD_FLAGS "-L${CMAKE_LIBRARY_OUTPUT_DIRECTORY}") 
     set(FFMPEG_EXTRA_C_FLAGS "-I${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/include")
 
     list(APPEND FFMPEG_CONFIGURE_EXTRAS --enable-gpl --enable-libx264 --enable-nonfree)
     list(APPEND FFMPEG_LIBS postproc x264)
 ENDIF()
 #FIXME here how to get library_ffmpeg : libavutil libswresample libavcodec libavformat libswscale libavfilter libavdevice
-include(ffmpeg.cmake)
+#include(ffmpeg.cmake)
 
-add_library(native-lib SHARED native-lib.c ${ffmpeg_src})
-add_dependencies(native-lib ffmpeg_target)
-find_library(log-lib log)
-#FIXME  here how to make FFMPEG library : avutil swresample avcodec avformat swscale avfilter avdevice
-target_link_libraries(native-lib ${log-lib} ${FFMPEG_LIBS})
+#add_library(native-lib SHARED ../../../../library_ffmpeg/src/main/cpp/native-lib.c ${ffmpeg_src})
+#add_dependencies(native-lib ffmpeg_target)
+#find_library(log-lib log)
+#target_link_libraries(${log-lib})

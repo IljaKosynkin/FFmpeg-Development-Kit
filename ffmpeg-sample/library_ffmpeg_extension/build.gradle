@@ -1,5 +1,5 @@
 plugins {
-    id 'com.android.application'
+    id 'com.android.library'
     id 'kotlin-android'
     id 'kotlin-android-extensions'
 }
@@ -13,12 +13,10 @@ android {
     buildToolsVersion "30.0.2"
 
     defaultConfig {
-        applicationId "com.syllogismobile.ffmpeg_sample"
         minSdkVersion 21
-        targetSdkVersion 29
+        targetSdkVersion 30
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         externalNativeBuild {
@@ -43,14 +41,34 @@ android {
     productFlavors {
         free {
             dimension "non-free"
+            buildConfigField "boolean", "LIB_X264_ENABLED", "false"
+            externalNativeBuild {
+                cmake {
+                    arguments "-DLIB_X264_ENABLED:BOOL=OFF", "-DANDROID_ARM_NEON=ON"
+                }
+            }
         }
         nonFree {
             dimension "non-free"
+            buildConfigField "boolean", "LIB_X264_ENABLED", "true"
+            externalNativeBuild {
+                cmake {
+                    arguments '-DLIB_X264_ENABLED:BOOL=ON', "-DANDROID_ARM_NEON=ON"
+                }
+            }
+        }
+    }
+
+    externalNativeBuild {
+        cmake {
+            path "src/main/cpp/CMakeLists.txt"
+            version "3.10.2"
         }
     }
 }
 
 dependencies {
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
@@ -58,7 +76,6 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.core:core-ktx:1.3.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    //FIXME dependencies error ?  is FFMPEG dependencies libx264 ? and then native-lib dependencies FFMPEG ?
     implementation project(path: ':library_ffmpeg')
-    implementation project(path: ':library_ffmpeg_extension')
 }
